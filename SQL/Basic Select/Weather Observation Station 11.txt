@@ -1,0 +1,18 @@
+/*
+Enter your query here.
+FIRST WAY
+*/
+SELECT DISTINCT CITY FROM STATION
+WHERE
+NOT LOWER(SUBSTRING(CITY,1,1) in ('a','e','i','o','u'))
+OR
+NOT LOWER(SUBSTRING(CITY,LENGTH(CITY),1) in ('a','e','i','o','u'));
+
+
+/*
+Enter your query here.
+SECOND WAY
+*/
+SELECT DISTINCT CITY FROM STATION WHERE NOT CITY REGEXP '^[a|e|i|o|u]' OR NOT CITY REGEXP '[a|e|i|o|u]$';
+or
+SELECT DISTINCT CITY FROM STATION WHERE NOT CITY REGEXP '^[a|e|i|o|u].*[a|e|i|o|u]$';

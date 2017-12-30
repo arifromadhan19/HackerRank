@@ -1,0 +1,27 @@
+/*
+Enter your query here.
+FIRST WAY
+*/
+SELECT DISTINCT CITY FROM STATION WHERE CITY LIKE '%a' OR CITY LIKE '%e' OR CITY LIKE '%i' OR CITY LIKE '%o' OR CITY LIKE '%u';
+
+/*
+Enter your query here.
+SECOND WAY
+*/
+SELECT DISTINCT CITY FROM STATION WHERE LOWER(SUBSTRING(CITY,LENGTH(CITY),1)) IN ('a','e','i','o','u');
+or
+SELECT DISTINCT CITY FROM STATION WHERE LOWER(SUBSTR(CITY,LENGTH(CITY),1)) IN ('a','e','i','o','u');
+
+NOTE:
+SUBSTRING(str, pos, len)
+str = A string (field/attribute)
+pos = Starting position.
+len = Length in characters.
+
+/*
+Enter your query here.
+THIRD WAY
+*/
+SELECT DISTINCT CITY FROM STATION WHERE CITY REGEXP '[aeiou]$';
+or
+SELECT DISTINCT CITY FROM STATION WHERE CITY REGEXP '[a|e|i|o|u]$';
