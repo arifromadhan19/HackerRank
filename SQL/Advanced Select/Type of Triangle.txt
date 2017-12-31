@@ -1,0 +1,55 @@
+/*
+Enter your query here.
+FIRST WAY
+CASE expression
+    WHEN condition1 THEN result1
+    WHEN conditionN THEN resultN
+    ELSE result
+END
+*/
+SELECT CASE
+            WHEN (A + B) > C AND (B + C) > A AND (A + C) > B  THEN
+                CASE
+                    WHEN A=B AND B=C AND C=A THEN "Equilateral"
+                    WHEN A=B OR B=C OR C=A THEN "Isosceles"
+                    WHEN A!=B OR B!=C OR C!=A THEN 'Scalene'
+                END
+            ELSE "Not A Triangle"
+        END
+FROM TRIANGLES;
+
+OR
+
+SELECT CASE
+            WHEN (A + B) > C AND (B + C) > A AND (A + C) > B  THEN
+                CASE
+                    WHEN A=B AND B=C AND C=A  THEN "Equilateral"
+                    WHEN A=B OR B=C OR C=A THEN "Isosceles"
+                    ELSE 'Scalene'
+                END
+            ELSE "Not A Triangle"
+        END
+FROM TRIANGLES;
+
+/*
+Enter your query here.
+SECOND WAY
+IF(expression ,expr_true, expr_false);
+*/
+SELECT
+    IF ((A + B) > C AND (B + C) > A AND (A + C) > B,
+        /* TRUE */
+        IF (A = B AND B = C AND C = A,
+            /* TRUE */
+            'Equilateral',
+            /* FLASE */
+            IF (A = B OR B = C OR A = C,
+                /* TRUE */
+                'Isosceles',
+                /* FALSE */
+                'Scalene'))
+     /* FALSE */
+    ,"Not A Triangle")
+FROM TRIANGLES;
+
+

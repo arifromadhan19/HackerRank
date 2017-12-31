@@ -1,0 +1,14 @@
+/*
+Enter your query here.
+FIRST WAY
+*/
+SELECT NAME FROM STUDENTS WHERE MARKS > 75 ORDER BY RIGHT(NAME, 3), ID ASC;
+
+/*
+Enter your query here.
+SECOND WAY
+*/
+SELECT Name
+FROM STUDENTS
+WHERE Marks>75
+ORDER BY SUBSTRING(Name,LENGTH(Name)-2, 3), id ASC;
