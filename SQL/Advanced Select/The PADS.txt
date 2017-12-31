@@ -1,0 +1,33 @@
+/*
+Enter your query here.
+FIRST WAY
+*/
+SELECT concat(NAME,
+              concat("(",
+                     concat(substr(OCCUPATION,1,1),
+                     ")"))) FROM OCCUPATIONS ORDER BY NAME ASC;
+
+SELECT "There are a total of ",
+    count(OCCUPATION),
+    concat(lower(occupation),"s.")
+FROM OCCUPATIONS GROUP BY OCCUPATION ORDER BY count(OCCUPATION), OCCUPATION ASC
+
+/*
+Enter your query here.
+SECOND WAY
+*/
+select case
+        when Occupation='Professor' then CONCAT(Name,'(P)')
+        when Occupation='Actor' then CONCAT(Name,'(A)')
+        when Occupation='Doctor' then CONCAT(Name,'(D)')
+        when Occupation='Singer' then CONCAT(Name,'(S)')
+    end
+from OCCUPATIONS ORDER BY Name ASC;
+select case
+        when Occupation='Professor' then CONCAT('There are a total of ', COUNT(Occupation),' professors.')
+        when Occupation='Actor' then CONCAT('There are a total of ', COUNT(Occupation),' actors.')
+        when Occupation='Doctor' then CONCAT('There are a total of ', COUNT(Occupation),' doctors.')
+        when Occupation='Singer' then CONCAT('There are a total of ', COUNT(Occupation),' singers.')
+    end
+from OCCUPATIONS GROUP BY OCCUPATION ORDER BY count(OCCUPATION), OCCUPATION ASC
+
